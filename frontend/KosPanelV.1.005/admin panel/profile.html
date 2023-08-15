@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy Json </title >
+
+  <!-- Tailwind is included -->
+  <link rel="stylesheet" href="css/main.css?v=1628755089081">
+
+  <meta name="description" content="Admin One - free Tailwind dashboard">
+
+  <meta property="og:url" content="https://justboil.github.io/admin-one-tailwind/">
+  <meta property="og:site_name" content="JustBoil.me">
+  <meta property="og:title" content="Admin One HTML">
+  <meta property="og:description" content="Admin One - free Tailwind dashboard">
+  <meta property="og:image" content="https://justboil.me/images/one-tailwind/repository-preview-hi-res.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="960">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Admin One HTML">
+  <meta property="twitter:description" content="Admin One - free Tailwind dashboard">
+  <meta property="twitter:image:src" content="https://justboil.me/images/one-tailwind/repository-preview-hi-res.png">
+  <meta property="twitter:image:width" content="1920">
+  <meta property="twitter:image:height" content="960">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130795909-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-130795909-1');
+  </script>
+
+</head>
+<body>
+
+<div id="app">
+
+  <nav id="navbar-main" class="navbar is-fixed-top" style="background-color: #0a1846;">
+    <div class="navbar-brand">
+      
+    </div>
+  <div class="navbar-menu" id="navbar-menu" style="background-color: #0a1846;">
+    <div class="navbar-end">
+      <div class="navbar-item  has-divider has-user-avatar">
+        
+      </div>
+      <a title="Log out" class="navbar-item desktop-icon-only" style="color: white;">
+        <button id="logoutButton"><i ><img src="/admin panel/img/logout.png"></i></button>
+        <span>Log out</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<aside class="aside is-placed-left is-expanded" style="background-color: #0a1846;">
+  
+  <div class="menu is-menu-main">
+    <p class="menu-label"><img src="/admin panel/img/logo-dark_tr.png"></p>
+    <ul class="menu-list">
+      <li class="--set-active-index-html">
+        <a href="index.html">
+          <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+          <span class="menu-item-label">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="menu-list">
+      <li class="--set-active-tables-html">
+        <a href="tables.html">
+          <span class="icon"><i class="mdi mdi-table"></i></span>
+          <span class="menu-item-label">Company List</span>
+        </a>
+      </li>
+      <li class="--set-active-forms-html">
+        <a href="forms.html">
+          <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
+          <span class="menu-item-label">Add Company</span>
+        </a>
+      </li>
+      <!-- <li class="active">
+        <a href="profile.html">
+          <span class="icon"><i class="mdi mdi-account-circle"></i></span>
+          <span class="menu-item-label">Dummy Json</span>
+        </a>
+      </li> -->
+
+    </ul>
+  </div>
+</aside>
+
+</div>
+
+<!-- Scripts below are for demo only -->
+<script type="text/javascript" src="js/main.min.js?v=1628755089081"></script>
+
+<script>
+  // Token'ı kontrol eden ve gösterilecek içeriği yöneten fonksiyon
+  function checkTokenAndShowTable() {
+    const token = localStorage.getItem("token");
+
+    // Eğer token yoksa veya geçersizse, kullanıcıyı giriş sayfasına yönlendir
+    if (!token) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    // Eğer token varsa, tabloyu göster
+    document.getElementById("app").style.display = "block";
+  }
+
+  // Çıkış yap butonuna tıklandığında çalışacak fonksiyon
+  function onLogout() {
+    // Tokenı temizlemek için yerel depolamayı kullanabiliriz
+    localStorage.removeItem("token");
+    // Kullanıcı çıkış yaptıktan sonra giriş sayfasına yönlendirin (login.html).
+    window.location.href = "login.html";
+  }
+
+  // Sayfa tamamen yüklendiğinde işlem yapmak için window.onload kullanıyoruz
+  window.onload = function () {
+    // Sayfa tamamen yüklendikten sonra token'ı kontrol et ve tabloyu göster
+    checkTokenAndShowTable();
+
+    // Çıkış yap butonuna tıklandığında onLogout() fonksiyonunu çağırır
+    document.getElementById("logoutButton").addEventListener("click", onLogout);
+  };
+</script>
+
+<!-- deneme -->
+<style>
+
+
+  </style>
+<div id="cards-container">
+
+  <div class="container mt-4">
+    
+    <table id="productTable" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Discount Percentage</th>
+          <th>Rating</th>
+          <th>Actions</th> <!-- Detay düğmesi için yeni sütun ekleme -->
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>const apiUrl = 'https://dummyjson.com/products';
+  let products = [];
+  
+  async function fetchProducts() {
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      products = data.products;
+      displayProducts();
+    } catch (error) {
+      console.error('Veri alınırken hata oluştu:', error);
+    }
+  }
+  
+  function displayProducts() {
+    const tableBody = $('#productTable tbody');
+    tableBody.empty();
+  
+    products.forEach(product => {
+      const row = $('<tr>');
+      row.append($('<td>').text(product.title));
+      row.append($('<td>').text(product.description));
+      row.append($('<td>').text('$' + product.price));
+      row.append($('<td>').text(product.discountPercentage + '%'));
+      row.append($('<td>').text(product.rating));
+      
+      // Detay düğmesi ekleme
+      const detailButton = $('<button>').text('Detaylar').addClass('btn btn-primary btn-sm ml-2');
+      detailButton.click(() => showDetail(product.id));
+      row.append($('<td>').append(detailButton));
+      
+      tableBody.append(row);
+    });
+  
+    // DataTables'in etkinleştirilmesi
+    $('#productTable').DataTable();
+  }
+  
+  function showDetail(productId) {
+    // Dinamik olarak detay sayfasına yönlendirme
+    window.location.href = 'detay.html?id=' + productId;
+  }
+  
+  window.addEventListener('load', fetchProducts);
+  </script>
+
+<!-- deneme -->
+
+
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '658339141622648');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=658339141622648&ev=PageView&noscript=1"/></noscript>
+
+<!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+
+</body>
+</html>
